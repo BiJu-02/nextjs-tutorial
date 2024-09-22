@@ -1,4 +1,5 @@
-import { Pool, PoolClient } from 'pg';
+import { PoolClient } from 'pg';
+import { pool } from '@/app/lib/db';
 import {
   CustomerField,
   CustomersTableType,
@@ -9,13 +10,6 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
-const pool = new Pool({
-  user: 'test1user', // replace with your database user
-  host: 'localhost', // replace with your database host
-  database: 'test1db', // replace with your database name
-  password: 'password', // replace with your database password
-  port: 5432, // default PostgreSQL port
-});
 
 export async function fetchRevenue() {
   const client: PoolClient = await pool.connect();

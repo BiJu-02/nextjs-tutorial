@@ -1,14 +1,7 @@
 import bcrypt from 'bcrypt';
-import { Pool, PoolClient } from 'pg';
+import { PoolClient } from 'pg';
+import { pool } from '@/app/lib/db';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
-
-const pool = new Pool({
-  user: 'test1user', // replace with your database user
-  host: 'localhost', // replace with your database host
-  database: 'test1db', // replace with your database name
-  password: 'password', // replace with your database password
-  port: 5432, // default PostgreSQL port
-});
 
 async function seedUsers(client: PoolClient) {
   await client.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`);
